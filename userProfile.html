@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userProfile</title>
+    <!-- font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        @media (max-width: 426px) {
+
+            #userprofile .header .poster {
+                background-image: url("./assets/images/971.jpg");
+                /* background-image: url("https://loremflickr.com/200/200?random=38"); */
+                /* background-repeat: no-repeat; */
+                background-position: center;
+                background-size: cover;
+                height: 40vh;
+                width: 100%;
+                object-fit: cover;
+                font-size: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: last baseline;
+            }
+
+            #userprofile .header .poster .profilePic {
+                background-color: aliceblue;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 2px;
+                margin-bottom: 3px;
+            }
+
+            #userprofile .header .poster .profilePic img {
+                border-radius: 50%;
+                object-fit: cover;
+                aspect-ratio: 1/1;
+                width: 100px;
+
+            }
+
+            #userprofile .header .names {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                font-size: 20px;
+            }
+
+            #userprofile .header .activity {
+                display: grid;
+                justify-content: space-around;
+                /* align-items: center; */
+                /* grid-auto-columns: minmax(30px, 3); */
+                grid-template-columns: repeat(3, 1fr);
+                padding: 5px;
+                text-align: center;
+            }
+
+            /* posts */
+            .posts {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                align-items: center;
+                justify-content: center;
+                gap: 3px;
+                padding: 2px;
+                justify-items: center;
+            }
+
+            .posts img {
+                width: 100%;
+                height: auto;
+                /* grid-row: span 7; */
+            }
+
+            /* footer */
+            .footNavigation {
+                display: flex;
+                justify-content: space-evenly;
+                position: fixed;
+                bottom: 0px;
+                z-index: 999;
+                width: 100vw;
+                max-height: fit-content;
+                background-color: #fff9f9;
+                padding: 6px;
+                font-size: 22px;
+            }
+
+            .sidebar {
+                width: 40vw;
+                height: 100vh;
+                background-color: #faf6f6;
+                display: flex;
+                position: absolute;
+                top: 0px;
+                right: 0px;
+            }
+
+            .sidebar .links ul li a {
+                text-decoration: none;
+                color: #000;
+                font-size: 18px;
+                padding: 5px 10px;
+                width: 100%;
+            }
+
+            .sidebar .links ul li {
+                margin: 15px 0px;
+                list-style: none;
+                border-bottom: 1px solid blue;
+                width: 100%;
+            }
+
+            #fullView {
+                position: absolute;
+                top: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #00000065;
+                height: 100vh;
+            }
+
+            #fullView img {
+                width: 100%;
+            }
+
+            /* view full image  */
+            #fullImage {
+                width: 100vw;
+                height: 100vh;
+                z-index: 999;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: #000000ac;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #fullImage img {
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="userprofile">
+        <div class="header">
+            <div class="poster">
+                <div class="profilePic">
+                    <img id="profilePicture" src="./assets/images/971.jpg" alt="">
+                    <!-- <img id="profilePicture" src="https://loremflickr.com/200/200?random=3" alt=""> -->
+                </div>
+            </div>
+            <div class="names">
+                <div class="userId">UserIdXyz</div>
+                <div class="userName">MyName is Xyz</div>
+            </div>
+            <div class="activity">
+                <span>followers</span>
+                <span>following</span>
+                <span>posts</span>
+                <span>100K</span>
+                <span>67</span>
+                <span>320</span>
+            </div>
+        </div>
+    </section>
+    <div class="posts">
+        <img src="./assets/images/IMG_0961.JPG" id="userPost" alt="" srcset="">
+        <img src="./assets/images/IMG_0790.JPG" id="userPost" alt="" srcset="">
+        <img src="./assets/images/971.jpg" id="userPost" alt="" srcset="">
+        <img src="./assets/images/IMG_0951 - Copy.JPG" id="userPost" alt="" srcset="">
+        <img src="./assets/images/IMG_0952 - Copy.JPG" id="userPost" alt="" srcset="">
+        <img src="./assets/images/IMG_0953 - Copy.JPG" id="userPost" alt="" srcset="">
+        <img src="./assets/images/IMG_0960.JPG" id="userPost" alt="" srcset="">
+        <img src="./assets/images/IMG_0982.JPG" id="userPost" alt="" srcset="">
+        <img src="./assets/images/IMG_0983.JPG" id="userPost" alt="" srcset="">
+        <img src="./assets/images/971.jpg" id="userPost" alt="" srcset="">
+        <img src="./assets/images/971.jpg" id="userPost" alt="" srcset="">
+
+        <!-- <img class="story" src="https://loremflickr.com/200/200?random=2" alt="">
+            <img class="story" src="https://loremflickr.com/200/200?random=3" alt="">
+            <img class="story" src="https://loremflickr.com/200/200?random=13" alt="">
+            <img class="story" src="https://loremflickr.com/200/200?random=31" alt="">
+            <img class="story" src="https://loremflickr.com/200/200?random=97" alt="">
+            <img class="story" src="https://loremflickr.com/200/200?random=67" alt="">
+            <img class="story" src="https://loremflickr.com/200/200?random=51" alt=""> -->
+    </div>
+    <section id="footSection">
+        <div class="footNavigation">
+            <a href="home.html">
+                <i class="fa-solid fa-house"></i></a>
+            <i class="fa-solid fa-upload"></i>
+            <i class="fa-solid fa-plus"></i>
+            <a href="userProfile.html">
+                <i class="fa-solid fa-user"></i></a>
+            <a href="" id="hamburger">-x-</a>
+        </div>
+    </section>
+    <aside>
+        <div class="sidebar" id="sidebar">
+
+            <button id="toggle-btn">x</button>
+            <div class="links">
+                <ul>
+                    <li><a href="">Edit profile</a></li>
+                    <li><a href="">Settings</a></li>
+                    <li><a href="">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+</body>
+<script>
+    //+++++++++++++++++++++++++++++++
+    const btn = document.getElementById('toggle-btn');
+    const sidebar = document.getElementById('sidebar');
+    const hamburger = document.getElementById('hamburger');
+    sidebar.style.display = 'none';
+    let isOpen = false
+
+    btn.addEventListener('click', function () {
+        sidebar.style.display = 'none';
+
+    });
+
+    hamburger.addEventListener('click', (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        isOpen = !isOpen;
+        sidebar.style.display = isOpen ? 'block' : 'none'
+        // if (sidebar.style.display === 'none') {  
+        //     sidebar.style.display = 'block'; 
+        // }
+    });
+
+    //view profile picture
+    const profilePicture = document.getElementById("profilePicture")
+    profilePicture.addEventListener('click', () => {
+        let picDiv = document.createElement('div')
+        picDiv.id = 'fullView'
+
+        //create img tag
+        let picInside = document.createElement('img')
+        let imgSrc2 = profilePicture.getAttribute('src')
+        picInside.setAttribute('src', imgSrc2)
+
+        picDiv.appendChild(picInside)
+        document.body.appendChild(picDiv)
+
+        //close profile pic
+        picDiv.addEventListener('click', (evt) => {
+            if (evt.target === picInside || evt.target === picDiv) {
+                clearTimeout(picDiv)
+                document.body.removeChild(picDiv)
+            }
+        })
+    })
+    //handle footer
+    window.addEventListener('load', function () {
+        const footNavigation = document.querySelector('.footNavigation')
+        const sect = document.querySelector('.posts')
+        const footNavHeight = footNavigation.offsetHeight;
+        sect.style.paddingBottom = `${footNavHeight}px`;
+    })
+
+    //view post on full screen
+    const userPostGallery = document.querySelectorAll('#userPost')
+    //problem only one element is getting selected
+    userPostGallery.forEach(full_screen_post => {
+        full_screen_post.addEventListener('click', () => {
+            const postDiv = document.createElement('div')
+            postDiv.id = "fullImage"
+
+            //get image
+            const imageElm = document.createElement('img')
+            const imgAddress = full_screen_post.getAttribute('src')
+            imageElm.setAttribute('src', imgAddress)
+            imageElm.setAttribute('src', imgAddress)
+            imageElm.style.maxWidth = '90%';
+            imageElm.style.maxHeight = '90%';
+            imageElm.style.objectFit = 'contain';
+            //append
+            document.body.appendChild(postDiv)
+            postDiv.appendChild(imageElm)
+
+            //close on click anywhere
+            postDiv.addEventListener('click', (evt) => {
+                if (evt.target === postDiv || evt.target === imageElm) {
+                    clearTimeout(postDiv)
+                    document.body.removeChild(postDiv)
+                }
+            })
+
+        })
+    })
+</script>
+
+</html>

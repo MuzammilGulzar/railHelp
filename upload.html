@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Interface</title>
+    <style>
+        .share-icon {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background: none;
+        }
+
+        .share-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .share-menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .share-menu.active {
+            transform: translateY(0);
+        }
+
+        .share-option {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0;
+            border: none;
+            background: #f8f8f8;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .share-option:hover {
+            background: #f0f0f0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #fileInput, #cameraInput {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Share Icon -->
+    <button class="share-icon" id="shareButton">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+            <polyline points="16 6 12 2 8 6"></polyline>
+            <line x1="12" y1="2" x2="12" y2="15"></line>
+        </svg>
+    </button>
+
+    <!-- Hidden File Inputs -->
+    <input type="file" id="fileInput" accept="image/*,video/*">
+    <input type="file" id="cameraInput" accept="image/*" capture="camera">
+
+    <!-- Share Menu -->
+    <div class="overlay" id="overlay"></div>
+    <div class="share-menu" id="shareMenu">
+        <button class="share-option" id="uploadButton">Upload from Gallery</button>
+        <button class="share-option" id="cameraButton">Take Photo</button>
+        <button class="share-option" id="shareUrlButton">Share URL</button>
+    </div>
+
+    <script>
+            
+        const shareButton = document.getElementById('shareButton');
+        const shareMenu = document.getElementById('shareMenu');
+        const overlay = document.getElementById('overlay');
+        const fileInput = document.getElementById('fileInput');
+        const cameraInput = document.getElementById('cameraInput');
+        const uploadButton = document.getElementById('uploadButton');
+        const cameraButton = document.getElementById('cameraButton');
+        const shareUrlButton = document.getElementById('shareUrlButton');
+
+        // Open share menu
+        shareButton.addEventListener('click', () => {
+            shareMenu.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        // Close share menu when clicking overlay
+        overlay.addEventListener('click', () => {
+            shareMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Upload from gallery
+        uploadButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Take photo
+        cameraButton.addEventListener('click', () => {
+            cameraInput.click();
+        });
+
+        // Share URL
+        shareUrlButton.addEventListener('click', async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Share Example',
+                        text: 'Check out this content!',
+                        url: window.location.href
+                    });
+                } catch (err) {
+                    console.error('Share failed:', err);
+                }
+            } else {
+                alert('Web Share API not supported in this browser');
+            }
+            shareMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Handle file selection
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files && e.target.files[0]) {
+                // Handle the selected file here
+                console.log('Selected file:', e.target.files[0]);
+                // You can add your upload logic here
+            }
+            shareMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Handle camera capture
+        cameraInput.addEventListener('change', (e) => {
+            if (e.target.files && e.target.files[0]) {
+                // Handle the captured photo here
+                console.log('Captured photo:', e.target.files[0]);
+                // You can add your upload logic here
+            }
+            shareMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

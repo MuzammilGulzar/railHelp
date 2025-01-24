@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        section{
+            background-color: rgb(241, 248, 248);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .loginForm{
+            border-radius: 9px;
+            padding: 10px 20px;
+            box-shadow: rgba(0, 0, 0, 0.418) 0px 1px 4px;
+            background-color: #fbf1f185;
+            height: 50vh;
+        }
+        .loginForm h2{
+            padding: 6px 0px 2px 0px;
+            text-align: center;
+        }
+        .loginForm label{
+            font-size: 18px;
+        }
+
+        .loginForm input{
+            margin: 5px 0px;
+            padding: 3px 10px;
+            width: 100%;
+            height: 40px;
+            border: 1px solid rgba(21, 21, 21, 0.788);
+            border-radius: 5px;
+        }
+        .loginForm button{
+            padding: 5px 15px;
+            width: 100%;
+            height: 30px;
+            border: none;
+            background-color: blue;
+            color: #fff;
+            border-radius: 9px;
+
+        }
+        .loginForm p{
+            padding: 6px 0px;
+            font-size: 17px;
+            text-align: center;
+        }
+        @media (max-width: 426px) {
+            .loginForm{
+                width: 100%;
+            }
+            .loginForm input{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <form action="home.html" class="loginForm" id="loginForm">
+            <h2>SignIn</h2>
+            <label for="">UserName</label>
+            <input type="text" placeholder="User Name" id="username" required> <br>
+            <label for="">Email</label>
+            <input type="email" name="email address" placeholder="Email Address" id="email" required><br>
+            <label for="">Password</label>
+            <input type="password" name="pass" placeholder="Password" id="password" required><br>
+            <button type="submit">Login</button>
+            <p>Don't have an account <a href="signUp.html">SignUp</a></p>
+        </form>
+    </section>
+</body>
+<script>
+    // let loginForm = document.getElementById('loginForm')
+    // loginForm.addEventListener('submit', (evt)=>{
+    //     evt.preventDefault()
+    //     const name = document.getElementById('username').value
+    //     const emailid = document.getElementById('email').value
+    //     const password = document.getElementById('password').value
+        
+    //     let error = []
+    //     if (name.length < 5){
+    //         error.push("invalid name")
+    //     }
+        
+    // })
+</script>
+
+</html>
