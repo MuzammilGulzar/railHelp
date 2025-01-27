@@ -3,16 +3,137 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* .sect{
+body{
+    background-color: #f6f5f5;
+}
+
+.sect {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+    background-color: #fff;
+    /* border: 2px solid red; */
+    width: 30vw;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.footNavigation {
+    /* needs correction */
+    display: flex;
+    justify-content: space-evenly;
+    /* width: 500px; */
+    /* margin: auto; */
+    align-items: center;
+    font-size: 22px;
+    /*  */
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0px;
+    z-index: 999;
+    width: 100vw;
+    max-height: fit-content;
+    background-color: #fff9f9;
+    padding: 6px;
+    font-size: 22px;
+}
+
+.header {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 2px;
+}
+
+.header::-webkit-scrollbar {
+    display: none;
+}
+
+.header ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 2px 2px;
+    border-radius: 50%;
+}
+
+.header ul li img {
+    border-radius: 50%;
+    width: 80px;
+}
+
+.sect .intro,
+.notify {
+    display: contents;
+    padding: 0px 20px;
+}
+
+.posts {
+    width: 90%;
+    /* border: 1px solid red; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* try */
+
+.posts .engaginPosts {
+    box-sizing: border-box;
+    margin-top: 2px;
+    /* width: 90vw; */
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.engaginPosts .userProfile img {
+    width: 60px;
+    border-radius: 50%;
+    margin: 3px 10px;
+}
+
+.engaginPosts .userName {
+    position: absolute;
+    top: 8px;
+    left: 74px;
+    font-size: 18px;
+}
+
+.engaginPosts .location {
+    position: absolute;
+    top: 25px;
+    left: 75px;
+    padding: 2px;
+    font-size: 14px;
+}
+
+.usersPost img {
+    width: 20vw;
+    height: auto;
+    /* border: 1px solid red; */
+    object-fit: contain;
+    margin-top: 1px;
+    border-radius: 5px;
+}
+
+.engaginPosts .icons {
+    width: 100%;
+    font-size: 22px;
+    margin: 5px 0px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+/* .engaginPosts .icons i {
+    border: 1px solid red;
 } */
 
 @media (max-width: 426px) {
     body {
-        background-color: #fff9f9;
+        background-color: #f6f5f5;
     }
 
     .intro {
@@ -54,10 +175,14 @@
         cursor: pointer;
     }
 
-    .engaginPosts {
+    .sect {
+        width: 100%;
+    }
+
+    .posts .engaginPosts {
         box-sizing: border-box;
         margin-top: 2px;
-        width: 79%;
+        width: 90vw;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -103,7 +228,6 @@
         display: flex;
         justify-content: space-evenly;
     }
-
     .engaginPosts .icons i {
         border: 1px solid red;
     }
