@@ -11,7 +11,7 @@ body {
 /* main  */
 #userprofile {
     background-color: #fff;
-    width: 30vw;
+    width: 40vw;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 9px 9px 0px 0px;
@@ -19,7 +19,7 @@ body {
 
 .posts {
     margin: auto;
-    width: 30vw;
+    width: 40vw;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 0px 0px 9px 9px;
@@ -108,12 +108,16 @@ body {
     background-color: #00000065;
     width: 100vw;
     height: 100vh;
+    z-index: 999;
+    overflow: hidden;
 }
 
 #fullView img {
-    width: 100vw;
-    height: auto;
-    object-fit: cover;
+    width: 90vw;
+    height: 90vh;
+    border-radius: 10px;
+    object-fit: contain;
+    overflow: hidden;
 }
 
 /* view full image  */
@@ -134,8 +138,9 @@ body {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    position: relative;
-    top: 0;
+    /* position: relative;
+    top: 0; */
+    border-radius: 9px;
 }
 
 /* foote */
@@ -177,7 +182,24 @@ body {
     width: 100%;
 }
 
+@media (max-width: 768px) {
+    #userprofile {
+        width: 70%;
+    }
+
+    .posts {
+        width: 70%;
+    }
+}
+
 @media (max-width: 426px) {
+    #userprofile {
+        width: 99%;
+    }
+
+    .posts {
+        width: 99%;
+    }
 
     #userprofile .header .poster {
         /*                 background-image: url("./assets/images/971.jpg"); */

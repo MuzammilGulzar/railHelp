@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+        }
+
+        .container {
+            width: 50vw;
+            margin: auto;
+            object-fit: contain;
+            overflow: hidden;
+            background-color: red;
+        }
+
+        .container img {
+            width: 50%;
+            height: 50vh;
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="uploadform">
+        <form action="" id="myForm">
+            <label for="userName">User Name</label>
+            <input type="text" name="" id="userName">
+            <label for="profilePic">User Name</label>
+            <input type="file" accept=".png, .jpg, .jpeg" name="" id="profilePic">
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+<script>
+    const myForm = document.getElementById("myForm")
+    const imagesArray = [];
+    const descriptionArray = [];
+    const postsArray = JSON.parse(localStorage.getItem("posts")) || [];
+    myForm.addEventListener("submit", function (evt) {
+        evt.preventDefault()
+        const name = document.getElementById("userName").value;
+        const post = document.getElementById("profilePic").value;
+        //save images description
+        descriptionArray.push(name)
+        // save images addres in images array
+        imagesArray.push(post)
+        const postObject = {
+            username: name,
+            userpost: post
+        }
+        postsArray.push(postObject)
+        // Store updated postsArray in Local Storage
+        localStorage.setItem("posts", JSON.stringify(postsArray));
+        // we need JSON.stringify() to convert array of objects because local storage stores
+        // because it only stores Strings
+        // clear form
+        document.getElementById("userName").value = ''
+        document.getElementById("profilePic").value = ''
+        getRandomPosts()
+    })
+
+    const users = ["abc", "def"]
+
+    persone = [
+        {
+            name: "userFirst",
+            post: "https://plus.unsplash.com/premium_photo-1736194026187-39e23ae676e0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            name: "userSecond",
+            post: "https://images.unsplash.com/photo-1735252723552-138dc3fb6f14?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            name: "userThird",
+            post: "https://images.unsplash.com/photo-1735124283566-5f5707a40808?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            name: "userFour",
+            post: "https://images.unsplash.com/photo-1737202325171-0f62f8296922?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            name: "userFive",
+            post: "https://images.unsplash.com/photo-1735977479864-d8a2612cee6d?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        },
+        {
+            name: "userSix",
+            post: "https://plus.unsplash.com/premium_photo-1712171314346-f2b287e72ce7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        }
+    ]
+    // const newelms = persone.concat(users)
+    // console.log(newelms)
+
+    // Create a main container for all posts
+    const mainContainer = document.createElement('div');
+    mainContainer.className = "main-container";
+    document.body.appendChild(mainContainer);
+    function getRandomPosts() {
+        const allPosts = JSON.parse(localStorage.getItem("posts")) || [];
+        // console.log(allPosts)
+        // use spread operator for not modifying original array
+        const copyPosts = [...allPosts]
+        // loop through posts
+        copyPosts.forEach(elm => {
+            // console.log(copyPosts)
+            const getRandomPost = copyPosts[Math.floor(Math.random() * copyPosts.length)]
+            // create div main container
+            const container = document.createElement('div')
+            container.className = "container"
+            // create div to display user name
+            const userName = document.createElement('div')
+            userName.innerText = getRandomPost.username
+            mainContainer.appendChild(container)
+            container.appendChild(userName)
+            const post = document.createElement('img')
+            // post.src = getRandomPost.userpost
+            // console.log(getRandomPost.userpost)
+            if (getRandomPost.userpost.startsWith("http") || getRandomPost.userpost.startsWith("data:image")) {
+                post.src = getRandomPost.userpost;
+            }
+            console.log(post.src)
+            console.log(`user name ${getRandomPost.username} url is ${getRandomPost.userpost}`)
+            container.appendChild(post)
+        });
+    }
+    getRandomPosts()
+    // // Use a copy of the persone array to prevent modifying the original
+    // const personeCopy = [...persone];
+
+    // personeCopy.forEach(elm => {
+    //     rndelm = personeCopy[Math.floor(Math.random() * personeCopy.length)]
+    //     const container = document.createElement('div')
+    //     container.className = "container"
+    //     const userName = document.createElement('div')
+    //     userName.innerText = rndelm.name
+    //     mainContainer.appendChild(container)
+    //     container.appendChild(userName)
+    //     const post = document.createElement('img')
+    //     post.src = rndelm.post
+    //     container.appendChild(post)
+    // });
+    // }
+    // getRandomPosts()
+
+    // create one array to store images
+    //create another array to store description
+    //create third array to store all data
+    //create object to store data of first two arrays
+    //pass the created object to thired array
+</script>
+
+</html>

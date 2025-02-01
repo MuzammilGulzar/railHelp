@@ -8,38 +8,55 @@ body {
     background-color: #f6f5f5;
 }
 
+/* my video */
+#videoDiv {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    max-width: 30vw;
+    max-height: auto;
+    gap: 2px;
+    margin: auto;
+    z-index: 0;
+    background-color: rgb(166, 100, 100);
+    overflow: hidden;
+}
+
+#myVideo {
+    width: 50vw;
+    height: auto;
+}
+
 .sect {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: #fff;
-    /* border: 2px solid red; */
     width: 30vw;
     margin: auto;
     margin-top: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 5px;
 }
 
 .footNavigation {
-    /* needs correction */
     display: flex;
     justify-content: space-evenly;
-    /* width: 500px; */
-    /* margin: auto; */
     align-items: center;
-    font-size: 22px;
-    /*  */
-    display: flex;
-    justify-content: space-evenly;
     position: fixed;
     bottom: 0px;
     z-index: 999;
     width: 100vw;
     max-height: fit-content;
-    background-color: #fff9f9;
+    background-color: #fff8f8;
     padding: 6px;
     font-size: 22px;
+    box-shadow: rgba(0, 0, 0, 0.16) -10px 1px 4px;
 }
+
 
 .header {
     width: 100%;
@@ -137,6 +154,17 @@ body {
 /* handling video upload */
 #uploadVideo {
     display: none;
+}
+
+@media (max-width: 768px) {
+    .sect {
+        width: 50%;
+    }
+    .usersPost img{
+        width: 50%;
+        height: 60%;
+        object-fit: contain;
+    }
 }
 
 @media (max-width: 426px) {

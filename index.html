@@ -46,6 +46,13 @@
                         Demo Name
                     </span>
                     <span><small class="location">some Location</small></span>
+
+                    <div class="description-container">
+                        <div class="post-description truncated">
+                            Here is video description and user needs to click here to see more details about the posts
+                        </div>
+                        <a href="#" class="read-more">Read more</a>
+                    </div>
                     <div class="usersPost">
                         <img src="https://picsum.photos/200/300?random=35" alt="">
                     </div>
@@ -67,9 +74,15 @@
                     <div class="usersPost">
                         <img src="https://picsum.photos/200/300?random=12" alt="">
                     </div>
+                    <div class="description-container">
+                        <div class="post-description truncated">
+                            Here is video description and user needs to click here to see more details about the posts
+                        </div>
+                        <a href="#" class="read-more">Read more</a>
+                    </div>
                     <div class="icons">
-                        <span class="like"><i class="fa-regular fa-heart"></i></span>
-                        <span class="comt"><i class="fa-regular fa-comment"></i></span>
+                        <span class="like" id="like"><i class="fa-regular fa-heart"></i></span>
+                        <span class="comt" id="comt"><i class="fa-regular fa-comment"></i></span>
                         <span class="share"><i class="fa-regular fa-share-from-square"></i></span>
                     </div>
                 </div>
@@ -85,6 +98,12 @@
                     <div class="usersPost">
                         <img src="https://picsum.photos/200/300?random=1" alt="">
                     </div>
+                    <div class="description-container">
+                        <div class="post-description truncated">
+                            Here is video description and user needs to click here to see more details about the posts
+                        </div>
+                        <a href="#" class="read-more">Read more</a>
+                    </div>
                     <div class="icons">
                         <span class="like"><i class="fa-regular fa-heart"></i></span>
                         <span class="comt"><i class="fa-regular fa-comment"></i></span>
@@ -96,9 +115,10 @@
         <section>
             <div class="footNavigation">
                 <a href="">
-                    <i class="fa-solid fa-house"></i>
+                    <i class="fa-solid fa-house">
+                    </i>
                 </a>
-                <a href="./upload.html">
+                <a href="videos.html">
                     <i class="fa-solid fa-upload"></i>
                 </a>
                 <a href="">
@@ -115,7 +135,7 @@
 <script>
 
     let viewStory = document.querySelectorAll(".story")
-    console.log(viewStory)
+    // console.log(viewStory)
     viewStory.forEach(elm => {
         elm.addEventListener('click', function () {
             //dynamically create element
@@ -171,6 +191,92 @@
         sect.style.paddingBottom = `${footNavHeight}px`;
     });
 
-</script>
+    // updated
+    // Store videos in an array
+    const videosArray = [];
 
+    const uploadVideo = document.getElementById("uploadVideo");
+
+    uploadVideo.addEventListener('change', function (evt) {
+        const files = evt.target.files;
+
+        // Loop over the files
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+
+            // Check if the file is not an MP4
+            if (file.type !== 'video/mp4' || !file.name.toLowerCase().endsWith('.mp4')) {
+                alert("Please upload a valid MP4 video file with .mp4 extension");
+                continue;
+            }
+
+            // Max size check (100MB)
+            const MAX_SIZE = 100 * 1024 * 1024 * 1024; // 100MB
+            if (file.size > MAX_SIZE) {
+                alert("File size exceeds 100MB limit");
+                continue;
+            }
+
+            // Generate a video URL
+            const videoUrl = URL.createObjectURL(file);
+
+            // Store in JS object
+            const videoData = {
+                name: file.name,
+                url: videoUrl,
+                size: file.size
+            };
+            videosArray.push(videoData);
+        }
+
+        // Reset the input to allow uploading the same file again
+        evt.target.value = '';
+        localStorage.setItem("videosArray", JSON.stringify(videosArray));
+        // video show
+        const getVideoUrl = videosArray[0].url
+        const getVideoNme = videosArray[0].name
+        // create elements
+        const viewVideo = document.createElement('div')
+        const videoTag = document.createElement('video')
+        viewVideo.style.width = "100vw"
+        viewVideo.style.height = "100vh"
+        viewVideo.id = "videoDiv"
+        videoTag.src = getVideoUrl
+        videoTag.controls = true
+        document.body.appendChild(viewVideo)
+        viewVideo.appendChild(videoTag)
+    });
+
+    // Retrieve stored videos on page load
+    // window.onload = function () {
+    //     const storedVideos = JSON.parse(localStorage.getItem("videosArray")) || [];
+
+    //     storedVideos.forEach(video => {
+    //         const viewVideo = document.createElement('div');
+    //         const videoTag = document.createElement('video');
+    //         viewVideo.style.width = "100vw";
+    //         viewVideo.style.height = "100vh";
+    //         viewVideo.style.zIndex = "0";
+    //         // viewVideo.id = "0";
+    //         viewVideo.id = "videoDiv";
+    //         videoTag.src = video.url;
+    //         videoTag.controls = true;
+    //         videoTag.id = "myVideo";
+    //         document.body.appendChild(viewVideo);
+    //         viewVideo.appendChild(videoTag);
+    //     });
+    // };
+    // Helper function to format file size
+    // function formatBytes(bytes) {
+    //     if (bytes === 0) return '0 Bytes';
+    //     const k = 1024;
+    //     const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    //     const i = Math.floor(Math.log(bytes) / Math.log(k));
+    //     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    // }
+    // description
+    
+    
+</script>
+<script src="likecomtFxns.js"></script>
 </html>
